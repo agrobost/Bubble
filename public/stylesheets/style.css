@@ -1,8 +1,84 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v6/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcoWiMMZ7xLd792ULpGE4W_Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
-a {
-  color: #00B7FF;
+body, html {
+	padding: 0px;
+	margin-right: 0px;
+	background: #ecf0f1;
+	font-family: 'Montserrat';
+}
+
+#header, #wraper {
+	width: 400px;
+	margin: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 15px 22px 15px 22px;
+}
+
+#header {
+	background: #2980b9;
+	color: #ecf0f1;
+	font-size: 1.5em;
+	-webkit-border-radius: 2px 2px;
+	border-radius: 2px 2px;
+	margin-top: 10%;
+}
+
+#wraper {
+	background: #bdc3c7;
+	color: #34495e;
+	-webkit-border-radius: 0 0 2px 2px;
+	border-radius: 0 0 2px 2px;
+}
+#form {
+	text-align: center;
+}
+#form input[type=text] {
+	padding: 0;
+	margin: auto;
+	border: 1px solid #95a5a6;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 1.2em;
+	padding: 9px 4px 8px 4px;
+	display: block;
+	width: 260px;
+}
+#form input[type=text]:focus {
+	border: 1px solid #95a5a6;
+	display: block;
+}
+#form input[type=submit] {
+	margin-top: 7px;
+	background: #2980b9;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	border: 0px;
+	color: #ecf0f1;
+	font-size: 1.3em;
+	padding: 7px 10px 7px 10px;
+	cursor: pointer;
+	-webkit-transition: background 300ms ease-in-out;
+	-moz-transition: background 300ms ease-in-out;
+	-ms-transition: background 300ms ease-in-out;
+	-o-transition: background 300ms ease-in-out;
+	transition: background 300ms ease-in-out;
+}
+#form input[type=submit]:hover {
+	background: #3498db;
 }
