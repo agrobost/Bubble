@@ -13,6 +13,10 @@
     		<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" />
     		<input type="submit" value="Play" id="play" />
     	</div>
+      <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://localhost:3000');
+        </script>
     </div>
   </body>
 </html>
