@@ -1,3 +1,5 @@
+'use strict'
+
 var EventReciever = function(socketio) {
 
 	socketio.socket.on('disconnect', function(){

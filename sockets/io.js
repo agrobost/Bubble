@@ -1,10 +1,11 @@
+'use strict'
+
 var ClientData = require("./../sockets/ClientData");
 var EventCaller = require("./../sockets/EventCaller");
 var EventReciever = require("./../sockets/EventReciever");
 var Connection = require("./../sockets/Connection");
 
 var socketio = function(io) {
-
 	this.dataManager;
 	this.socket;
 	this.io = io;

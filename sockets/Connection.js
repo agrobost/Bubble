@@ -1,3 +1,5 @@
+'use strict'
+
 var Connection = function(socketio) {
 	var socketio = socketio;
 
@@ -8,10 +10,18 @@ var Connection = function(socketio) {
 		return true;
 	}
 	this.requestConnection = function(pseudo) {
+		var obj = {};
 		if(isValidePseudo(pseudo)) {
 			socketio.dataManager.push("pseudo", pseudo);
-			socketio.eCaller.connect("http://localhost:3000");
+			console.log(" >> " + socketio.dataManager.get("id")+" is now log as "+socketio.dataManager.get("pseudo"));
+
+			obj.valid = true;
+			obj.address = "http://localhost:3000";
+			
+		} else {
+			obj.valid = false;
 		}
+		socketio.eCaller.connect(obj);
 	}
 }
 

@@ -3,7 +3,7 @@
   <head>
     <title>Bubble :: <%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/scripts/jquery.js"></script>
   </head>
   <body>
     <div id="header">
@@ -23,7 +23,12 @@
               $("#pseudo").val('');
             });
             socket.on("coValid", function(o) {
-              alert(o.address);
+              if(o.valid) {
+                alert(o.address);
+              }
+              else {
+                alert("pseudo invalide");
+              }
             });
         </script>
     </div>
