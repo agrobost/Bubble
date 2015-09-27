@@ -11,6 +11,9 @@ var ClientData = function(soc) {
 		}
 		return data[dataName];
 	}
+	this.remove = function(dataName) {
+		delete data[dataName];
+	}
 }
 
 module.exports = ClientData;
