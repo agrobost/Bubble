@@ -3,6 +3,7 @@
   <head>
     <title>Bubble :: <%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   </head>
   <body>
     <div id="header">
@@ -16,6 +17,14 @@
       <script src="/socket.io/socket.io.js"></script>
         <script>
             var socket = io.connect('http://localhost:3000');
+
+            $("#play").click(function() {
+              socket.emit("requestLogging", {pseudo: $("#pseudo").val()});
+              $("#pseudo").val('');
+            });
+            socket.on("coValid", function(o) {
+              alert(o.address);
+            });
         </script>
     </div>
   </body>
