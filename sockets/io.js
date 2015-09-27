@@ -1,6 +1,5 @@
 var ClientData = require("./../sockets/ClientData");
 var dataManager;
-var sockets = {};
 
 var socketio = function(io) {
 	io.on('connection', function(socket){
@@ -15,4 +14,4 @@ var socketio = function(io) {
 	});
 }
 
-exports.load = socketio;
+module.exports = socketio;
