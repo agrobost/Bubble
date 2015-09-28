@@ -22,7 +22,7 @@ body, html {
 	font-family: 'Montserrat';
 }
 
-#header, #wraper {
+.wrapper {
 	width: 400px;
 	margin: auto;
 	margin-top: 0px;
@@ -30,7 +30,7 @@ body, html {
 	padding: 15px 22px 15px 22px;
 }
 
-#header {
+.wrapper .title {
 	background: #2980b9;
 	color: #ecf0f1;
 	font-size: 1.5em;
@@ -39,14 +39,16 @@ body, html {
 	margin-top: 10%;
 }
 
-#wraper {
+.wrapper {
+    position : relative;
 	background: #bdc3c7;
 	color: #34495e;
 	-webkit-border-radius: 0px 0px 2px 2px;
 	border-radius: 0px 0px 2px 2px;
+    z-index: 100;
 }
 #form {
-	text-align: center;
+	text-align: c;
 }
 #form input[type=text] {
 	padding: 0;
@@ -81,4 +83,15 @@ body, html {
 }
 #form input[type=submit]:hover {
 	background: #3498db;
+}
+
+#canvas{
+    position:absolute;
+    width : 100%;
+    height : 100%;
+    top : 0px;
+    bottom : 0px;
+    right : 0px;
+    left : 0px;
+    z-index: 10;
 }

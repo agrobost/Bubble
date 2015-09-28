@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bubble :: <%= title %></title>
+<head>
+    <meta charset="utf-8" />
+    <title>Bubble</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="/scripts/jquery.js"></script>
-  </head>
-  <body>
-    <div id="header">
-    	<%= headerTitle %>
-    </div>
-    <div id="wraper">
-    	<div id="form">
-    		<input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" />
-    		<input type="submit" value="Play" id="play" />
-    	</div>
-      <script src="/socket.io/socket.io.js"></script>
-        <script>
-            var socket = io.connect('http://localhost:3000');
+</head>
+<body>
+    <section class="wrapper">
+        <h1 class="title">Bubble</h1>
+        <form id="form">
+                <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" />
+                <input type="submit" value="Play" id="submit" />
+        </form>
+    </section>
+    <canvas id="canvas">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
 
-            $("#play").click(function() {
-              socket.emit("requestLogging", {pseudo: $("#pseudo").val()});
-              $("#pseudo").val('');
-            });
-            socket.on("coValid", function(o) {
-              if(o.valid) {
-                alert(o.address);
-              }
-              else {
-                alert("pseudo invalide");
-              }
-            });
-        </script>
-    </div>
-  </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/scripts/jquery.js"></script>
+    <script src="/scripts/Emission.js"></script>
+    <script src="/scripts/Reception.js"></script>
+    <script src="/scripts/IO.js"></script>
+    <script>
+
+    var socket = io.connect('http://localhost:3000');
+
+    $("#submit").click(function() {
+        socket.emit("requestLogging", {pseudo: $("#pseudo").val()});
+        $("#pseudo").val('');
+        return false;
+    });
+    document.getElementById("canvas").width = window.innerWidth;
+    document.getElementById("canvas").height = window.innerHeight;
+    window.onresize = function(e){
+        document.getElementById("canvas").width = window.innerWidth;
+        document.getElementById("canvas").height = window.innerHeight;
+    }
+    var io = new IO(socket);
+
+
+
+    </script>
+</body>
 </html>
