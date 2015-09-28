@@ -1,7 +1,7 @@
 'use strict'
 
 var ClientData = require("./ClientData");
-var EventCaller = require("./EventCaller");
+var EventEmitter = require("./EventEmitter");
 var EventReciever = require("./EventReciever");
 var Connection = require("./Connection");
 
@@ -14,8 +14,8 @@ var IO = function(io) {
 
 		this.connection = new Connection(this);
 
-	  	this.eCaller = new EventCaller(this);
-	  	this.eReciever = new EventReciever(this);
+	  	this.eventEmitter = new EventEmitter(this);
+	  	this.eventReciever = new EventReciever(this);
 
 	 }
 	 io.on('connection', load);

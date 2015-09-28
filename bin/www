@@ -8,7 +8,8 @@ var app = require('../app');
 var debug = require('debug')('Bubble:server');
 var http = require('http');
 
-var socketinit = require('./../sockets/client/io');
+var socketClientIO = require('./../sockets/client/io');
+var socketServerIO = require('./../sockets/server/io');
 
 /**
  * Get port from environment and store in Express.
@@ -39,7 +40,8 @@ server.on('listening', onListening);
 var io = app.io
 io.attach(server);
 
-var soc = new socketinit(io);
+var soc = new socketClientIO(io);
+var socServ = new socketServerIO(4000);
 
 /**
  * Normalize a port into a number, string, or false.
