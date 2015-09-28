@@ -59,10 +59,4 @@ app.use(function(err, req, res, next) {
   });
 });
 
-// socket.io events
-io.on( "connection", function( socket ){
-
-  console.log( "A user connected" );
-});
-
 module.exports = app;
