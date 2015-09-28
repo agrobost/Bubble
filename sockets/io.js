@@ -8,7 +8,6 @@ var Connection = require("./../sockets/Connection");
 var socketio = function(io) {
 
 	var load = function(soc) {
-		console.log(soc);
 		this.socket = soc;
 		this.clientData = new ClientData(this.socket);
 		this.clientData.push("id", this.socket.id);
