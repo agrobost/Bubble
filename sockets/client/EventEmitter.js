@@ -1,6 +1,6 @@
 'use strict'
 
-var EventCaller = function(socketio) {
+var EventEmitter = function(socketio) {
 
 	var socketio = socketio;
 
@@ -11,4 +11,4 @@ var EventCaller = function(socketio) {
 	}
 }
 
-module.exports = EventCaller;
+module.exports = EventEmitter;

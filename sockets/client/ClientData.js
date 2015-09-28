@@ -1,5 +1,3 @@
-'use strict'
-
 var ClientData = function(soc) {
 	var data = {};
 	var socket = soc;
