@@ -12,8 +12,8 @@ var Connection = function(socketio) {
 	this.requestConnection = function(pseudo) {
 		var obj = {};
 		if(isValidePseudo(pseudo)) {
-			socketio.dataManager.push("pseudo", pseudo);
-			console.log(" >> " + socketio.dataManager.get("id")+" is now log as "+socketio.dataManager.get("pseudo"));
+			socketio.clientData.push("pseudo", pseudo);
+			console.log(" >> " + socketio.clientData.get("id")+" is now log as "+socketio.clientData.get("pseudo"));
 
 			obj.valid = true;
 			obj.address = "http://localhost:3000";

@@ -3,7 +3,7 @@
 var EventReciever = function(socketio) {
 
 	socketio.socket.on('disconnect', function(){
-	    console.log(' << user '+socketio.dataManager.get("id")+' disconnected');
+	    console.log(' << user '+socketio.clientData.get("id")+' disconnected');
 	});
 	socketio.socket.on("requestLogging", function(o) {
 		socketio.connection.requestConnection(o.pseudo);
