@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug')('Bubble:server');
 var http = require('http');
 
-var socketinit = require('./../sockets/io');
+var socketinit = require('./../sockets/client/io');
 
 /**
  * Get port from environment and store in Express.
