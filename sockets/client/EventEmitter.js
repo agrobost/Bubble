@@ -11,4 +11,8 @@ var EventEmitter = function(socketio) {
 	}
 }
 
+<<<<<<< HEAD:sockets/client/EventEmitter.js
 module.exports = EventEmitter;
+=======
+module.exports = EventCaller;
+>>>>>>> gargantua:sockets/EventCaller.js
