@@ -1,24 +1,52 @@
-'use strict'
+"use strict"
 
-var ClientData = require("./ClientData");
 var EventEmitter = require("./EventEmitter");
 var EventReciever = require("./EventReciever");
-var Connection = require("./Connection");
 
-var IO = function(io) {
+var IO = function(port) {
+	var modules = {};
+	var prefix = "::red::[ClientIO]::white::"
+	var io = require("socket.io")(port);
+	this.serverIO;
+	console.log("Listening port "+port+" for clients", prefix);
 
-	var load = function(soc) {
-		this.socket = soc;
-		this.clientData = new ClientData(this.socket);
-		this.clientData.push("id", this.socket.id);
+	var eventEmitter = new EventEmitter();
+	var eventReciever = new EventReciever();
 
-		this.connection = new Connection(this);
+	//this.serverManager = new ServerManager(this);
+	this.emit = function(socket, variable, object) {
+		eventEmitter.emit(socket, variable, object);
+	}
+	this.emitAll = function(variable, object) {
+		eventEmitter.emit(io, variable, object);
+	}
+	this.bind = function(variable, fct, socket) {
+		fct = fct || function(){};
+		if(!socket) {
+			eventReciever.listen(io, variable, fct);
+		} else {
+			eventReciever.listen(socket, variable, fct);
+		}
+	}
 
-	  	this.eventEmitter = new EventEmitter(this);
-	  	this.eventReciever = new EventReciever(this);
-
-	 }
-	 io.on('connection', load);
+	this.addModule = function(module, fct) {
+		fct = fct || function(){};
+		if(module) {
+			var moduleLib = require("./modules/"+module);
+			modules[module] = new moduleLib(this, fct);
+		} else {
+			console.log("Can't find module "+module,prefix);
+		}
+	}
+	this.getModules = function() {
+		return modules;
+	}
+	this.setServerIO = function(serverIO) {
+		this.serverIO = serverIO;
+	}
+	this.getServerIO = function() {
+		return this.serverIO;
+	}
 }
 
 module.exports = IO;

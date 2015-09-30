@@ -2,7 +2,7 @@ var Reception = function(io){
     this.io = io;
     io.socket.on("coValid", function(o) {
         if(o.valid) {
-            alert("yep")
+            alert(o.address);
             $(".wrapper").hide();
         }
         else {
