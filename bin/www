@@ -16,7 +16,7 @@ var ModuleLoader = require("./../modules/moduleLoader");
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
 /**
@@ -41,10 +41,18 @@ server.on('listening', onListening);
 var io = app.io
 io.attach(server);
 
-var soc = new socketClientIO(io);
-var socServ = new socketServerIO(4000);
-var loader = new ModuleLoader(socServ);
-loader.load("server");
+var clientIO;
+var serverIO; 
+serverIO = new socketServerIO(4000);
+clientIO = new socketClientIO(3000);
+serverIO.setClientIO(clientIO);
+clientIO.setServerIO(serverIO);
+
+var clientLoader = new ModuleLoader(clientIO);
+clientLoader.load("client");
+
+var serverLoader = new ModuleLoader(serverIO);
+serverLoader.load("server");
 
 /**
  * Normalize a port into a number, string, or false.

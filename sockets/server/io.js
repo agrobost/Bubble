@@ -7,10 +7,11 @@ var IO = function(port) {
 	var modules = {};
 	var prefix = "::cyan::[GameServer]::white::"
 	var io = require("socket.io")(port);
+	this.clientIO;
 	console.log("Listening port "+port+" for game server", prefix);
 
-	var eventEmitter = new EventEmitter(this);
-	var eventReciever = new EventReciever(this);
+	var eventEmitter = new EventEmitter();
+	var eventReciever = new EventReciever();
 
 	//this.serverManager = new ServerManager(this);
 	this.emit = function(socket, variable, object) {
@@ -39,6 +40,13 @@ var IO = function(port) {
 	}
 	this.getModules = function() {
 		return modules;
+	}
+
+	this.setClientIO = function(clientIO) {
+		this.clientIO = clientIO;
+	}
+	this.getClientIO = function() {
+		return this.clientIO;
 	}
 }
 

@@ -1,6 +1,6 @@
 "use strict"
 
-var EventReciever = function(IO) {
+var EventReciever = function() {
 	this.listen = function(socket, variable, fct) {
 		socket.on(variable, fct);
 	}

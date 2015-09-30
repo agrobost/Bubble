@@ -1,6 +1,6 @@
 "use strict"
 
-var EventEmitter = function(IO) {
+var EventEmitter = function() {
 	this.emit = function(socket, variable, obj) {
 		socket.emit(variable, obj);
 	}
