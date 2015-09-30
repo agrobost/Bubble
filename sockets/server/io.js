@@ -2,6 +2,7 @@
 
 var EventEmitter = require("./EventEmitter");
 var EventReciever = require("./EventReciever");
+var ServerManager = require("./ServerManager");
 
 var IO = function(port) {
 	this.io = require("socket.io")(port);
@@ -9,6 +10,8 @@ var IO = function(port) {
 
 	this.eventEmitter = new EventEmitter(this);
 	this.eventReciever = new EventReciever(this);
+
+	this.serverManager = new ServerManager(this);
 }
 
 module.exports = IO;
