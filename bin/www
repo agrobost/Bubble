@@ -10,6 +10,7 @@ var http = require('http');
 
 var socketClientIO = require('./../sockets/client/io');
 var socketServerIO = require('./../sockets/server/io');
+var ModuleLoader = require("./../modules/moduleLoader");
 
 /**
  * Get port from environment and store in Express.
@@ -42,6 +43,8 @@ io.attach(server);
 
 var soc = new socketClientIO(io);
 var socServ = new socketServerIO(4000);
+var loader = new ModuleLoader(socServ);
+loader.load("server");
 
 /**
  * Normalize a port into a number, string, or false.

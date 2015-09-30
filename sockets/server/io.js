@@ -2,17 +2,44 @@
 
 var EventEmitter = require("./EventEmitter");
 var EventReciever = require("./EventReciever");
-var ServerManager = require("./ServerManager");
 
 var IO = function(port) {
+	var modules = {};
 	var prefix = "::cyan::[GameServer]::white::"
-	this.io = require("socket.io")(port);
+	var io = require("socket.io")(port);
 	console.log("Listening port "+port+" for game server", prefix);
 
-	this.eventEmitter = new EventEmitter(this);
-	this.eventReciever = new EventReciever(this);
+	var eventEmitter = new EventEmitter(this);
+	var eventReciever = new EventReciever(this);
 
-	this.serverManager = new ServerManager(this);
+	//this.serverManager = new ServerManager(this);
+	this.emit = function(socket, variable, object) {
+		eventEmitter.emit(socket, variable, object);
+	}
+	this.emitAll = function(variable, object) {
+		eventEmitter.emit(io, variable, object);
+	}
+	this.bind = function(variable, fct, socket) {
+		fct = fct || function(){};
+		if(!socket) {
+			eventReciever.listen(io, variable, fct);
+		} else {
+			eventReciever.listen(socket, variable, fct);
+		}
+	}
+
+	this.addModule = function(module, fct) {
+		fct = fct || function(){};
+		if(module) {
+			var moduleLib = require("./modules/"+module);
+			modules[module] = new moduleLib(this, fct);
+		} else {
+			console.log("Can't find module "+module,prefix);
+		}
+	}
+	this.getModules = function() {
+		return modules;
+	}
 }
 
 module.exports = IO;
