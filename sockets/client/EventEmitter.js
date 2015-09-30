@@ -10,9 +10,4 @@ var EventEmitter = function(socketio) {
 		socketio.socket.emit("coValid", o);
 	}
 }
-
-<<<<<<< HEAD:sockets/client/EventEmitter.js
 module.exports = EventEmitter;
-=======
-module.exports = EventCaller;
->>>>>>> gargantua:sockets/EventCaller.js
