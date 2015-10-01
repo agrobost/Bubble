@@ -40,10 +40,10 @@ var UserManager = function(IO, callback) {
 			obj.valid = true;
 			obj.address = "";
 
-			var adressNkey = IO.getServerIO().getModules()["ServerManager"].findServer();
+			var adressNkey = IO.getModules()["ServerIOConnection"].findServer();
 			obj.address = adressNkey.split("#")[0];
 			obj.key = adressNkey.split("#")[1];
-			IO.getServerIO().getModules()["ServerManager"].preventServerForUser(obj.key, pseudo);
+			IO.getModules()["ServerIOConnection"].preventServerForUser(obj.key, pseudo);
 			
 		} else {
 			obj.valid = false;

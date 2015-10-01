@@ -7,7 +7,6 @@ var IO = function(port) {
 	var modules = {};
 	var prefix = "::red::[ClientIO]::white::"
 	var io = require("socket.io")(port);
-	this.serverIO;
 	console.log("Listening port "+port+" for clients", prefix);
 
 	var eventEmitter = new EventEmitter();
@@ -41,12 +40,20 @@ var IO = function(port) {
 	this.getModules = function() {
 		return modules;
 	}
-	this.setServerIO = function(serverIO) {
-		this.serverIO = serverIO;
-	}
-	this.getServerIO = function() {
-		return this.serverIO;
-	}
 }
 
-module.exports = IO;
+var IOsingleton = (function() {
+	var io;
+	return {
+		getIO: function(port) {
+			if(!io) {
+				if(port) {
+					io = new IO(port);
+				}
+			}
+			return io;
+		}
+	}
+})();
+
+module.exports = IOsingleton;
