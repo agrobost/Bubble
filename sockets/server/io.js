@@ -50,4 +50,24 @@ var IO = function(port) {
 	}
 }
 
-module.exports = IO;
+var IOsingleton = (function() {
+	var sio;
+
+	function createInstance(port) {
+		var obj = new IO(port);
+		return obj;
+
+	}
+	return {
+		getIO: function(port) {
+			if(!sio) {
+				if(port) {
+					sio = createInstance(port);
+				}
+			}
+			return sio;
+		}
+	}
+})();
+
+module.exports = IOsingleton;

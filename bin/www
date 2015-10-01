@@ -43,10 +43,8 @@ io.attach(server);
 
 var clientIO;
 var serverIO; 
-serverIO = new socketServerIO(4000);
-clientIO = new socketClientIO(3000);
-serverIO.setClientIO(clientIO);
-clientIO.setServerIO(serverIO);
+serverIO = socketServerIO.getIO(4000);
+clientIO = socketClientIO.getIO(3000);
 
 var clientLoader = new ModuleLoader(clientIO);
 clientLoader.load("client");
