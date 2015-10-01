@@ -25,6 +25,7 @@
     <script>
 
     var socket = io.connect('http://localhost:3000');
+    var socketGame;
 
     $("#submit").click(function() {
         socket.emit("requestLogging", {pseudo: $("#pseudo").val()});

@@ -36,19 +36,11 @@ var UserManager = function(IO, callback) {
 		var obj = {};
 		if(isValidePseudo(pseudo)) {
 			console.log("::green::"+socket.id+"::white:: is now log as ::green::"+pseudo, prefix);
-
-			obj.valid = true;
-			obj.address = "";
-
-			var adressNkey = IO.getModules()["ServerIOConnection"].findServer();
-			obj.address = adressNkey.split("#")[0];
-			obj.key = adressNkey.split("#")[1];
-			IO.getModules()["ServerIOConnection"].preventServerForUser(obj.key, pseudo);
+			IO.getModules()["ConnectToGameServer"].request(pseudo, socket);
 			
 		} else {
 			obj.valid = false;
 		}
-		IO.emit(socket, "coValid", obj);
 	}
 }
 module.exports = UserManager;

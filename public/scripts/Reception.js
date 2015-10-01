@@ -1,8 +1,10 @@
 var Reception = function(io){
     this.io = io;
-    io.socket.on("coValid", function(o) {
+    io.socket.on("connectTo", function(o) {
         if(o.valid) {
-            alert(o.address);
+            socketGame = io.connect(o.address);
+            socketGame.emit("getServerInfos", {key: o.key, pseudo: o.pseudo});
+
             $(".wrapper").hide();
         }
         else {

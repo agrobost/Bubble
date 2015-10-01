@@ -7,7 +7,6 @@ var IO = function(port) {
 	var modules = {};
 	var prefix = "::cyan::[GameServer]::white::"
 	var io = require("socket.io")(port);
-	this.clientIO;
 	console.log("Listening port "+port+" for game server", prefix);
 
 	var eventEmitter = new EventEmitter();
@@ -41,13 +40,6 @@ var IO = function(port) {
 	this.getModules = function() {
 		return modules;
 	}
-
-	this.setClientIO = function(clientIO) {
-		this.clientIO = clientIO;
-	}
-	this.getClientIO = function() {
-		return this.clientIO;
-	}
 }
 
 var IOsingleton = (function() {
@@ -65,6 +57,7 @@ var IOsingleton = (function() {
 					sio = createInstance(port);
 				}
 			}
+			console.log("call me maybe " + (port || ""));
 			return sio;
 		}
 	}
