@@ -6,7 +6,10 @@ var EventReciever = require("./EventReciever");
 var IO = function(port) {
 	var modules = {};
 	var prefix = "::red::[ClientIO]::white::"
-	var io = require("socket.io")(port);
+
+	var io = require("socket.io")();
+	io.listen(port);
+
 	console.log("Listening port "+port+" for clients", prefix);
 
 	var eventEmitter = new EventEmitter();

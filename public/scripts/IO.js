@@ -1,3 +1,4 @@
+console.log(io);
 var IO = {
     socket : io.connect('http://localhost:3000'),
     socketGame : 'undefined',

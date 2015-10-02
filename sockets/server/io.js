@@ -57,7 +57,7 @@ var IOsingleton = (function() {
 					sio = createInstance(port);
 				}
 			}
-			
+
 			return sio;
 		}
 	}

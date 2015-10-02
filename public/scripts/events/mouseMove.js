@@ -1,3 +1,3 @@
-addEvent(document.getElementById('canvas'),'mousemove',function () {
+/*addEvent(document.getElementById('canvas'),'mousemove',function () {
 
-});
+});*/
