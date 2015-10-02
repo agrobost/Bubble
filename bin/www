@@ -34,21 +34,11 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 
-/**
- * Socket.io
- */
-
-var io = app.io
-io.attach(server);
-
-var clientIO;
-var serverIO; 
-serverIO = socketServerIO.getIO(4000);
-clientIO = socketClientIO.getIO(3000);
+var clientIO = socketClientIO.getIO(3000);
+var serverIO = socketServerIO.getIO(4000);
 
 var clientLoader = new ModuleLoader(clientIO);
 clientLoader.load("client");
-
 var serverLoader = new ModuleLoader(serverIO);
 serverLoader.load("server");
 

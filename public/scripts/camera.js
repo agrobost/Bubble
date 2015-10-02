@@ -1,15 +1,15 @@
-var camera = function(x, y){ //center camera
-    var minInHeight = 1000;
-    var zoom = 1;
-    var x = x;//coord bubble
-    var y = y;//coord bubble
+function Camera(x, y){ //center camera
+    var minInHeight = 2160; //résolution max : 4k
+    var zoom = minInHeight / document.getElementById("canvas").height;
+    var x = x;
+    var y = y;
 
     //convert sizeScreen to sizeMap, map correspond to playground and screen correspond to canvas
     this.getX_onScreen = function(xMap){
-        return ((xMap - camera.x)/zoom;
+        return (xMap - camera.x)/zoom;
     };
     this.getY_onScreen = function(yMap){
-        return ((yMap - camera.y)/zoom;
+        return (yMap - camera.y)/zoom;
     };
     this.getX_onMap = function(xScreen){
         return camera.x+xScreen*zoom;
