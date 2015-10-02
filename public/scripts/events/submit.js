@@ -1,5 +1,5 @@
 document.getElementById("form_pseudo").onsubmit = function () {
-    IO.socket.emit("requestLogging", {pseudo: $("#pseudo").val()});
+    IO.emission.connection.pseudo($("#pseudo").val());
     $("#pseudo").val('');
     return false;
 };
