@@ -57,7 +57,7 @@ var IOsingleton = (function() {
 					sio = createInstance(port);
 				}
 			}
-			console.log("call me maybe " + (port || ""));
+			
 			return sio;
 		}
 	}

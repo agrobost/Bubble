@@ -1,8 +1,9 @@
-var Reception = function(io){
+var Reception = function(socket, io){
     this.io = io;
-    io.socket.on("connectTo", function(o) {
+    socket.socket.on("connectTo", function(o) {
         if(o.valid) {
-            socketGame = io.connect(o.address);
+            
+            connect(o.address);
             socketGame.emit("getServerInfos", {key: o.key, pseudo: o.pseudo});
 
             $(".wrapper").hide();
@@ -11,4 +12,7 @@ var Reception = function(io){
             alert("pseudo invalide");
         }
     });
+    var connect = function(addr) {
+        socketGame = this.io.connect(addr);
+    }
 }
