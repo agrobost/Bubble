@@ -7,7 +7,7 @@ var IO = {
 }
 IO.socket.on("connectTo", function(o) {
     if(o.valid) {
-        IO.socketGame = io.connect(addr);
+        IO.socketGame = io.connect(o.addr);
         IO.socketGame.emit("getServerInfos", {key: o.key, pseudo: o.pseudo});
         $(".wrapper").hide();
     }
