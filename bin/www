@@ -18,9 +18,6 @@ var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 var server = http.createServer(app);
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
 
 
 socket_io().attach(server);
@@ -33,6 +30,10 @@ clientLoader.load("client");
 var serverLoader = new ModuleLoader(serverIO);
 serverLoader.load("server");
 
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
